@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Joke from "./components/Joke";
 
-export default function homepage() {
+export default function HomePage() {
+  const [setup, setSetup] = useState("");
+  const [punchline, setPunchline] = useState("");
+
   function handleResponse(response) {
     console.log("handleResponse FIRED");
     console.log("response from API", response);
-    const setup = response.data[0].setup;
-    const punchline = response.data[0].punchline;
+    setSetup(response.data[0].setup);
+    setPunchline(response.data[0].punchline);
     console.log("SETUP", setup, "PUNCHLINE", punchline);
   }
 
@@ -26,7 +29,8 @@ export default function homepage() {
   return (
     <div>
       <button onClick={handleClick}>Wanna hear a juicy programmer joke?</button>
-      <Joke />
+      <h6>{setup}</h6>
+      <h6>{punchline}</h6>
     </div>
   );
 }
