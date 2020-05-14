@@ -10,7 +10,11 @@ export default function HomePage() {
     console.log("handleResponse FIRED");
     console.log("response from API", response);
     setSetup(response.data[0].setup);
-    setPunchline(response.data[0].punchline);
+    const oneSecond = 1000;
+    const fiveSeconds = oneSecond * 5;
+    setTimeout(function() {
+      setPunchline(response.data[0].punchline);
+    }, fiveSeconds);
     console.log("SETUP", setup, "PUNCHLINE", punchline);
   }
 
@@ -31,6 +35,9 @@ export default function HomePage() {
       <button onClick={handleClick}>Wanna hear a juicy programmer joke?</button>
       <h6>{setup}</h6>
       <h6>{punchline}</h6>
+      {punchline != "" ? (
+        <button onClick={handleClick}>Gimme more!</button>
+      ) : null}
     </div>
   );
 }
