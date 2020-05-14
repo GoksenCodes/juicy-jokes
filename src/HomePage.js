@@ -30,14 +30,28 @@ export default function HomePage() {
     fetchRandomJoke();
   };
 
+  const handleSecondJokeClick = event => {
+    event.preventDefault();
+    setSetup("");
+    setPunchline("");
+    fetchRandomJoke();
+  };
+
   return (
     <div>
       <button onClick={handleClick}>Wanna hear a juicy programmer joke?</button>
       <h6>{setup}</h6>
       <h6>{punchline}</h6>
-      {punchline != "" ? (
-        <button onClick={handleClick}>Gimme more!</button>
+      {punchline !== "" ? (
+        <button onClick={handleSecondJokeClick}>Gimme more!</button>
       ) : null}
+      <a
+        className="twitter-share-button"
+        href={`https://twitter.com/intent/tweet?text=${setup}%20${punchline}`}
+        data-size="large"
+      >
+        Tweet
+      </a>
     </div>
   );
 }
