@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Joke from "./components/Joke";
+import LikeorDislike from "./LikeorDislike";
 
 export default function HomePage() {
   const [setup, setSetup] = useState("");
@@ -51,6 +52,11 @@ export default function HomePage() {
       >
         Tweet
       </a>
+      <div>
+        <Link to="/addajoke" className="btn btn-primary">
+          I know a better joke
+        </Link>
+      </div>
     </div>
   );
 }
