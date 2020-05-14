@@ -5,7 +5,7 @@ import HomePage from "./HomePage";
 function App() {
   return (
     <div className="App">
-      <head>JUICY JOKES</head>
+      <h2>JUICY JOKES</h2>
       <HomePage />
     </div>
   );
