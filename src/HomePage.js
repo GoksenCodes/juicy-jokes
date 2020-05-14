@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Joke from "./components/Joke";
 
 export default function HomePage() {
   const [setup, setSetup] = useState("");
