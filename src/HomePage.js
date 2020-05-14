@@ -9,19 +9,18 @@ export default function HomePage() {
   function handleResponse(response) {
     console.log("handleResponse FIRED");
     console.log("response from API", response);
-    setSetup(response.data[0].setup);
+    setSetup(response.data.newJoke.setup);
     const oneSecond = 1000;
     const fiveSeconds = oneSecond * 5;
     setTimeout(function() {
-      setPunchline(response.data[0].punchline);
+      setPunchline(response.data.newJoke.punchline);
     }, fiveSeconds);
-    console.log("SETUP", setup, "PUNCHLINE", punchline);
   }
 
   const fetchRandomJoke = () => {
     console.log("FETCH FIRED");
-    let apiUrl = `https://official-joke-api.appspot.com/jokes/programming/random`;
-    axios.get(apiUrl).then(handleResponse);
+    let apiUrl = "http://localhost:4001";
+    axios.get(`${apiUrl}/jokes`).then(handleResponse);
   };
 
   const handleClick = event => {
