@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Joke from "./components/Joke";
-import LikeorDislike from "./LikeorDislike";
+
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [setup, setSetup] = useState("");
@@ -43,17 +43,21 @@ export default function HomePage() {
       <h6>{setup}</h6>
       <h6>{punchline}</h6>
       {punchline !== "" ? (
-        <button onClick={handleSecondJokeClick}>Gimme more!</button>
+        <div>
+          <button onClick={handleSecondJokeClick}>Gimme more!</button>
+        </div>
       ) : null}
-      <a
-        className="twitter-share-button"
-        href={`https://twitter.com/intent/tweet?text=${setup}%20${punchline}`}
-        data-size="large"
-      >
-        Tweet
-      </a>
       <div>
-        <Link to="/addajoke" className="btn btn-primary">
+        <a
+          className="twitter-share-button"
+          href={`https://twitter.com/intent/tweet?text=${setup}%20${punchline}`}
+          data-size="large"
+        >
+          Tweet
+        </a>
+      </div>
+      <div>
+        <Link className="addJoke" to="/addjoke" className="btn btn-primary">
           I know a better joke
         </Link>
       </div>
