@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+// import { Button, Container } from "@material-ui/core";
+import { Container, Button, Row, Col } from "react-bootstrap";
 
 export default function AddAJoke() {
   const [setup, setSetup] = useState("");
   const [punchline, setPunchline] = useState("");
+  console.log("SEETYO", setup);
 
   const displayResult = () => {
     return <div>JOKE ADDED!</div>;
@@ -20,13 +23,13 @@ export default function AddAJoke() {
   function submitForm(event) {
     event.preventDefault();
     console.log("HANDLE SUBMIT FIRED");
-    addJoke();
+    addJoke(setup, punchline);
   }
 
   return (
     <div>
       <h5>Add A Joke</h5>
-      <form>
+      <form className="form">
         <div>
           <label>Setup: </label>
           <input
@@ -46,9 +49,14 @@ export default function AddAJoke() {
           ></input>
         </div>
         <div>
-          <button variant="primary" type="submit" onClick={submitForm}>
+          <Button
+            size="small"
+            variant="contained"
+            color="primary"
+            onClick={submitForm}
+          >
             Submit!
-          </button>
+          </Button>
         </div>
       </form>
     </div>
