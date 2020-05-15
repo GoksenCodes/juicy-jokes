@@ -8,15 +8,17 @@ export default function AddAJoke() {
   const [punchline, setPunchline] = useState("");
   console.log("SEETYO", setup);
 
-  const displayResult = () => {
-    return <div>JOKE ADDED!</div>;
+  const cleanForm = () => {
+    alert("We just added your juicy joke! ");
+    setSetup("");
+    setPunchline("");
   };
 
   const addJoke = (setup, punchline) => {
     console.log("addjoke is fired");
     console.log("before post req", setup, punchline);
     let apiUrl = "http://localhost:4001";
-    axios.post(`${apiUrl}/jokes`, { setup, punchline }).then(displayResult);
+    axios.post(`${apiUrl}/jokes`, { setup, punchline }).then(cleanForm);
     console.log("setup", setup, "punchline", punchline);
   };
 
