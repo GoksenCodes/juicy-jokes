@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-
 import { Link } from "react-router-dom";
 //import { Button, Container } from "@material-ui/core";
 import { Container, Button, Row, Col } from "react-bootstrap";
-
 
 export default function HomePage() {
   const [setup, setSetup] = useState("");
@@ -63,15 +61,23 @@ export default function HomePage() {
               </Button>
             </div>
             <div class="m-3">
-              <Button
+              {/* <Button
                 as={Link}
                 className="twitter-share-button"
                 href={`https://twitter.com/intent/tweet?text=${setup}%20${punchline}`}
+                data-size="large"
                 variant="primary"
                 size="sm"
               >
                 Tweet
-              </Button>
+              </Button> */}
+              <a
+                className="twitter-share-button"
+                href={`https://twitter.com/intent/tweet?text=${setup}%20${punchline}`}
+                data-size="large"
+              >
+                Tweet
+              </a>
             </div>
             <div class="m-3">
               <Button
