@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
+import { Link } from "react-router-dom";
+//import { Button, Container } from "@material-ui/core";
+import { Container, Button, Row, Col } from "react-bootstrap";
+
+
 export default function HomePage() {
   const [setup, setSetup] = useState("");
   const [punchline, setPunchline] = useState("");
@@ -36,20 +42,51 @@ export default function HomePage() {
   };
 
   return (
-    <div>
-      <button onClick={handleClick}>Wanna hear a juicy programmer joke?</button>
-      <h6>{setup}</h6>
-      <h6>{punchline}</h6>
-      {punchline !== "" ? (
-        <button onClick={handleSecondJokeClick}>Gimme more!</button>
-      ) : null}
-      <a
-        className="twitter-share-button"
-        href={`https://twitter.com/intent/tweet?text=${setup}%20${punchline}`}
-        data-size="large"
-      >
-        Tweet
-      </a>
-    </div>
+    <Container fluid className="d-flex align-items-center min-vh-100">
+      <Container className="d-flex align-items-center flex-column mw-50 box">
+        {setup === "" && (
+          <Button color="secondary" onClick={handleClick}>
+            Wanna hear a juicy programmer joke?
+          </Button>
+        )}
+        <h3 className="mb-3">{setup}</h3>
+        <h2>{punchline}</h2>
+        {punchline !== "" ? (
+          <div className="d-flex justify-content-center">
+            <div class="m-3">
+              <Button
+                variant="primary"
+                size="sm"
+                onClick={handleSecondJokeClick}
+              >
+                Gimme more!
+              </Button>
+            </div>
+            <div class="m-3">
+              <Button
+                as={Link}
+                className="twitter-share-button"
+                href={`https://twitter.com/intent/tweet?text=${setup}%20${punchline}`}
+                variant="primary"
+                size="sm"
+              >
+                Tweet
+              </Button>
+            </div>
+            <div class="m-3">
+              <Button
+                as={Link}
+                className="addJoke"
+                to="/addjoke"
+                variant="primary"
+                size="sm"
+              >
+                Nah, I know a better joke
+              </Button>
+            </div>
+          </div>
+        ) : null}
+      </Container>
+    </Container>
   );
 }
