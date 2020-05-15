@@ -17,8 +17,6 @@ Install and run the server
 
 ### Installing
 
-* Create a new project based on this template using the Use this template button
-
 * Clone the app
 
 ```git clone git@github.com:YOUR_GITHUB_NAME/YOUR_PROJECT_NAME.git```
